@@ -144,12 +144,13 @@ typedef struct {
     uint32_t observe_value;
 } coap_pkt_t;
 
-typedef ssize_t (*coap_handler_t)(coap_pkt_t* pkt, uint8_t *buf, size_t len);
+typedef ssize_t (*coap_handler_t)(coap_pkt_t* pkt, uint8_t *buf, size_t len, void *param);
 
 typedef struct {
     const char *path;
     unsigned methods;
     coap_handler_t handler;
+    void *parameter;
 } coap_resource_t;
 
 extern const coap_resource_t coap_resources[];
@@ -261,7 +262,8 @@ static inline uint32_t coap_get_observe(coap_pkt_t *pkt)
 }
 
 extern ssize_t coap_well_known_core_default_handler(coap_pkt_t* pkt, \
-                                                    uint8_t *buf, size_t len);
+                                                    uint8_t *buf, size_t len,
+                                                    void *param);
 
 #define COAP_WELL_KNOWN_CORE_DEFAULT_HANDLER \
     { "/.well-known/core", COAP_GET, coap_well_known_core_default_handler }

@@ -146,7 +146,8 @@ ssize_t coap_handle_req(coap_pkt_t *pkt, uint8_t *resp_buf, unsigned resp_buf_le
             break;
         }
         else {
-            return coap_resources[i].handler(pkt, resp_buf, resp_buf_len);
+            return coap_resources[i].handler(pkt, resp_buf, resp_buf_len,
+                coap_resources[i].parameter);
         }
     }
 
@@ -345,8 +346,10 @@ size_t coap_put_option_url(uint8_t *buf, uint16_t lastonum, const char *url)
 }
 
 ssize_t coap_well_known_core_default_handler(coap_pkt_t* pkt, uint8_t *buf, \
-                                             size_t len)
+                                             size_t len, void *ignored)
 {
+    (void)ignored;
+
     uint8_t *payload = buf + coap_get_total_hdr_len(pkt);
 
     uint8_t *bufpos = payload;
