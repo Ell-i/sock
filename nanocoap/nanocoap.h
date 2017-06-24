@@ -269,7 +269,7 @@ static inline uint32_t coap_get_observe(coap_pkt_t *pkt)
 }
 
 extern ssize_t coap_well_known_core_default_handler(coap_pkt_t* pkt, \
-                                                    uint8_t *buf, size_t len);
+                                                    uint8_t *buf, size_t len, ...);
 
 #define COAP_WELL_KNOWN_CORE_DEFAULT_HANDLER \
     { "/.well-known/core", COAP_GET, coap_well_known_core_default_handler }
