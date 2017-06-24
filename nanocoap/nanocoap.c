@@ -345,7 +345,7 @@ size_t coap_put_option_url(uint8_t *buf, uint16_t lastonum, const char *url)
 }
 
 ssize_t coap_well_known_core_default_handler(coap_pkt_t* pkt, uint8_t *buf, \
-                                             size_t len)
+                                             size_t len, ...)
 {
     uint8_t *payload = buf + coap_get_total_hdr_len(pkt);
 
