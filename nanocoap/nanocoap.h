@@ -147,7 +147,7 @@ typedef struct {
     uint32_t observe_value;
 } coap_pkt_t;
 
-typedef ssize_t (*coap_handler_t)(coap_pkt_t* pkt, uint8_t *buf, size_t len);
+typedef ssize_t (*coap_handler_t)(coap_pkt_t* pkt, uint8_t *buf, size_t len, ...);
 
 typedef struct {
     const char *path;
