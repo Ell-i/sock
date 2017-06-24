@@ -146,7 +146,7 @@ ssize_t coap_handle_req(coap_pkt_t *pkt, uint8_t *resp_buf, unsigned resp_buf_le
             break;
         }
         else {
-            return coap_resources[i].handler(pkt, resp_buf, resp_buf_len);
+            return coap_resources[i].handler(pkt, resp_buf, resp_buf_len, &coap_resources[i]);
         }
     }
 
