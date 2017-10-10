@@ -153,6 +153,7 @@ typedef struct {
     const char *path;
     unsigned methods;
     coap_handler_t handler;
+    uint32_t item;
 } coap_resource_t;
 
 extern const coap_resource_t coap_resources[];
